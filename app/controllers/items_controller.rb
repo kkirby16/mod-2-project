@@ -14,11 +14,24 @@ class ItemsController < ApplicationController
   def create
     @item = Item.create(item_params)
 
-    if @item.save
+    if @item.valid?
+      @item.save
       redirect_to @item
     else
       render :new
     end
+  end
+
+  def edit
+    @item = Item.new
+  end
+
+  def update
+    @item = Item.find(params[:id])
+    byebug
+    @item.comment += "/n/n #{params[:comment]}"
+    @item.save
+    redirect_to @item
   end
 
   def destroy
@@ -31,7 +44,7 @@ class ItemsController < ApplicationController
   private
 
   def item_params
-    params.require(:item).permit(:price, :name)
+    params.require(:item).permit(:price, :name, :comment)
   end
 
   def find_item #should I have this method in here?

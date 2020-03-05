@@ -11,10 +11,18 @@ class OrdersController < ApplicationController
     @order = Order.new
   end
 
+  def edit
+    @order = Order.find(params[:id])
+  end
+
+  def update
+  end
+
   def create
-    @order = Order.create(order_params)
+    @order = Order.create(order_params) #or order.build?
 
     if @order.save
+      flash[:notice] = "Subject created successfully"
       redirect_to @order
     else
       render :new
