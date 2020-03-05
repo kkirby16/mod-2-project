@@ -1,0 +1,6 @@
+Username: <%= @user.username %>
+
+<% if @user == current_page %>
+<%= button_to "DESTROY", "/users/destroy", method: :destroy %>
+<%= button_to "LOGOUT", "/logout", method: :destroy %>
+<% end %>
