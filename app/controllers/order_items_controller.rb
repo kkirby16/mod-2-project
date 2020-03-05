@@ -7,6 +7,8 @@ class OrderItemsController < ApplicationController
     @order_item = OrderItem.new(order_item_params)
   end
 
+  #should I have an update method in here too to update the order?
+
   def delete
     @order_item.destroy #is this method right?
     redirect_to order_path(current_order)
