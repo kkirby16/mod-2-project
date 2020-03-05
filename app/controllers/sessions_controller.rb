@@ -1,4 +1,4 @@
-class SessionsController < ApplicationController
+class SessionsController < ApplicationController #probably don't worry about this until after I have my crud working I think?
   def create
     @user = User.find_by(username: params[:username])
 
@@ -19,7 +19,7 @@ class SessionsController < ApplicationController
   end
 
   def login
-    
+
   end
 
   def new

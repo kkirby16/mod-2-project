@@ -15,15 +15,20 @@ Item.destroy_all
 Location.destroy_all
 ItemLocation.destroy_all
 
-Item.create(name: "Pot Roast", price: 10.00) #should these have the 00's or not? should these have dollar signs?
-Item.create(name: "Pad Thai", price: 9.00)
-Item.create(name: "Chicken Tikka Masala", price: 11.00)
-Item.create(name: "Tacos", price: 8.00)
+i1 = Item.create(name: "Pot Roast", price: 10.00, description: "Made with beef") #should these have the 00's or not? should these have dollar signs?
+i2 = Item.create(name: "Pad Thai", price: 9.00, description: "Made with chicken")
+Item.create(name: "Chicken Tikka Masala", price: 11.00, description: "Made with zesty ass sauce")
+Item.create(name: "Tacos", price: 8.00, description: "got the zing")
 
-Location.create(city: "Seattle") #create a few locations?
-Location.create(city: "Bellevue")
-Location.create(city: "Kirkland")
-Location.create(city: "Tukwila")
+#seattle.location.items << certain items.
+
+l1 = Location.create(city: "Seattle") #create a few locations?
+l2 = Location.create(city: "Bellevue")
+l3 = Location.create(city: "Kirkland")
+l4 = Location.create(city: "Tukwila")
+#this is working so that I can put certain items for certain locations.
+
+l1.items << [i1, i2] #don't need this stuff until later. index page for locations. could make a show page where they click on location and it shows what items are there. l2.items would list it out. location.items.each show item.name, and item.price
 
 kevin = User.create(name: "Kevin", username: "kevin123@gmail.com", password_digest: "password123")
 bob = User.create(name: "Bob", username: "Bob242@gmail.com", password_digest: "password232!!")

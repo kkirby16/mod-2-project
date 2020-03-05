@@ -1,0 +1,4 @@
+<h1>Here are our locations. Click on yours to see the menu!</h1>
+<% @locations.each do |location| %>
+<%= link_to location.city, location %>
+<% end %>

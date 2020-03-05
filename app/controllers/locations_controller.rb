@@ -3,6 +3,14 @@ class LocationsController < ApplicationController
     @location = Location.new
   end
 
+  def index
+    @locations = Location.all #if have specific items at a location.
+  end
+
+  def show
+    @location = Location.find(params[:id])
+  end
+
   def create
     @location = Location.create(location_params)
   end
