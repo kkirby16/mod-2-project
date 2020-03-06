@@ -1,5 +1,10 @@
+<h1> You can order these items for your location:</h1> 
+ (click the entree links to see info about entrees) 
+ <br>
 <% @location.items.each do |item| %>
 <%= link_to item.name, item %>
 <%= item.price %>
 <br>
 <% end %>
+<h1>Click here to order</h1>
+<%= link_to "Order", new_order_path(@location.id) %>
