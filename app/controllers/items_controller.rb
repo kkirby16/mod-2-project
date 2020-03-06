@@ -5,6 +5,11 @@ class ItemsController < ApplicationController
 
   def show
     @item = Item.find(params[:id])
+    if @item.comment != nil
+      @all_comments = @item.comment.split("^") #all comments will be an array so can do enum on that.
+    else
+      @all_comments = [""]
+    end
   end
 
   def new
@@ -28,11 +33,13 @@ class ItemsController < ApplicationController
 
   def update
     @item = Item.find(params[:id])
-    byebug
-    if @item.comment.length != 0
-      @item.comment += "/n/n #{params[:comment]}"
-    else @item.comment == nil
-      @item.comment = params[:comment]     end
+    if @item.comment != nil
+      @item.comment += "^#{params[:item][:comment]}"
+    else
+      #byebug
+      @item.comment == nil
+      @item.comment = params[:item][:comment]
+    end
     @item.save
     redirect_to @item
   end

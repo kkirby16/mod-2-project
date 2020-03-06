@@ -1,5 +1,11 @@
 Name: <%= @item.name %>
 Price: <%= @item.price %><br>
 Description: <%= @item.description %><br>
-What some users have said about this dish: <%= @item.comment %> <%= link_to "Comment on this dish", edit_item_path(@item) %>
+What some users have said about this dish: <% @all_comments.each do |comment| %>
+<br><%= comment %><br>
+<% end %>
+
+
+
+<%= link_to "Comment on this dish", edit_item_path(@item) %>
 
