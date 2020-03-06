@@ -9,6 +9,13 @@ class OrdersController < ApplicationController
 
   def new
     @order = Order.new
+    @specific = ItemLocation.all.select do |item|
+      byebug
+      item.location_id == @location.id
+    end
+    @item = @specific.select do |item|
+      item.location_id == @location.id
+    end
   end
 
   def edit
@@ -42,7 +49,7 @@ class OrdersController < ApplicationController
     params.require(:order).permit(:date_of_order, :user_id)
   end
 
-  def find_order #should I have this method in here?
-    @order = Order.find(params[:id])
-  end
+  # def find_order #should I have this method in here?
+  #   @order = Order.find(params[:id])
+  # end
 end
