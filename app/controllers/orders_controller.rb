@@ -10,7 +10,6 @@ class OrdersController < ApplicationController
   def new
     @order = Order.new
     @specific = ItemLocation.all.select do |item|
-      byebug
       item.location_id == @location.id
     end
     @item = @specific.select do |item|

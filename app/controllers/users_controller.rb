@@ -3,8 +3,10 @@ class UsersController < ApplicationController
     @user = User.new
   end
 
-  def home
+  def home #make sure can use a user on your website and use that user to do stuff. could have collection select so can use
   end
+
+  #one collection select with all the users and one collcetion seect with all the items.
 
   def index
     User.all #take all auth stuff

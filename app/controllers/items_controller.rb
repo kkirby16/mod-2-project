@@ -23,13 +23,16 @@ class ItemsController < ApplicationController
   end
 
   def edit
-    @item = Item.new
+    @item = Item.find(params[:id])
   end
 
   def update
     @item = Item.find(params[:id])
     byebug
-    @item.comment += "/n/n #{params[:comment]}"
+    if @item.comment.length != 0
+      @item.comment += "/n/n #{params[:comment]}"
+    else @item.comment == nil
+      @item.comment = params[:comment]     end
     @item.save
     redirect_to @item
   end
@@ -47,7 +50,7 @@ class ItemsController < ApplicationController
     params.require(:item).permit(:price, :name, :comment)
   end
 
-  def find_item #should I have this method in here?
-    @item = Item.find(params[:id])
-  end
+  # def find_item #should I have this method in here?
+  #   @item = Item.find(params[:id])
+  # end
 end
